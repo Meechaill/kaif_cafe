@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Kaif - столовая Моргена</title>
+  <link rel="icon" href="icon.png">
+  <style>
+    body {
+      background-color: #00aaff;
+      color: white;
+      font-family: Calibri, sans-serif;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    #content {
+      margin-top: 200px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 24px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 24px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="content">
+    <input type="text" id="inputText">
+    <br><br>
+    <button onclick="checkText()">Забрать подарок</button>
+  </div>
+
+  <script>
+    function checkText() {
+      var inputText = document.getElementById("inputText").value;
+      if (inputText === "Слаvа мерлоу") {
+        document.body.style.backgroundColor = "green";
+        document.getElementById("content").innerHTML = "";
+        var textElement = document.createElement("p");
+        textElement.style.color = "white";
+        textElement.style.animation = "fadeIn 2s ease";
+        textElement.innerHTML = "Хахаха, не стоило мне верить, я взломал тебя.<br>Тебе нужно пройти все мои задания, чтобы разблокировать свой телефон!";
+        document.getElementById("content").appendChild(textElement);
+        setTimeout(function() {
+          var buttonElement = document.createElement("button");
+          buttonElement.innerHTML = "Жми!";
+          buttonElement.onclick = function() {
+            document.body.style.backgroundImage = "url('1.png')";
+            document.getElementById("content").innerHTML = "1 вопрос. 0 НаZOVи порядок работы цилиндров в ЗИЛ 131. ТОЛЬКО ЦИФРЫ!!!<br><br>";
+            var input = document.createElement("input");
+            input.type = "text";
+            input.id = "answer";
+            document.getElementById("content").appendChild(input);
+            var button = document.createElement("button");
+            button.innerHTML = "Проверить";
+            button.onclick = checkAnswer;
+            document.getElementById("content").appendChild(button);
+          };
+          document.getElementById("content").appendChild(buttonElement);
+        }, 2000);
+      } else {
+        alert("Неверный текст!");
+      }
+    }
+
+    function checkAnswer() {
+      var answer = document.getElementById("answer").value;
+      if (answer === "15426378") {
+        var content = document.getElementById("content");
+        content.innerHTML = "Откуда ты это знаешь? Ладно, следующий вопрос<br><br>";
+        var button = document.createElement("button");
+        button.innerHTML = "Жми!";
+        button.onclick = continueQuest;
+        content.appendChild(button);
+      } else {
+        alert("Неверный ответ!");
+      }
+    }
+
+    function continueQuest() {
+      document.body.style.backgroundImage = "url('2.png')";
+      var content = document.getElementById("content");
+      content.innerHTML = "2 вопрос. 8 Кто лучше, я, Моргенштерн (1), или же Оксимирон (2)?<br><br>";
+      var input = document.createElement("input");
+      input.type = "text";
+      input.id = "answer";
+      content.appendChild(input);
+      var button = document.createElement("button");
+      button.innerHTML = "Проверить";
+      button.onclick = checkAnswer2;
+      content.appendChild(button);
+    }
+
+    function checkAnswer2() {
+      var answer = document.getElementById("answer").value;
+      if (answer === "1") {
+        document.body.style.backgroundColor = "#00aaff";
+        var content = document.getElementById("content");
+        content.innerHTML = "А ты молодец, ограничения сняты<br><br>";
+        var button = document.createElement("button");
+        button.innerHTML = "Жми дальше!";
+        button.onclick = finishQuest;
+        content.appendChild(button);
+      } else if (answer === "2") {
+        window.open("https://www.youtube.com/watch?v=xrFjO9L_17U&ab_channel=%D0%9C%D0%B0%D1%82%D1%80%D0%B8%D1%86%D0%B0%D0%A4%D0%B0%D0%B7%D0%B1%D0%B5%D1%80%D0%B0", "_blank");
+        var content = document.getElementById("content");
+        content.innerHTML = "Ты проиграл от Фреди, ПЛОХАЯ КОНЦОВКА. Начни заново!";
+      } else {
+        alert("Неверный ответ!");
+      }
+    }
+
+    function finishQuest() {
+      document.body.style.backgroundColor = "white";
+      var content = document.getElementById("content");
+      content.innerHTML = "<p style='color: black'>Вы выбрались! Вы прошли все квесты! Нажмите, чтобы получить приз. КОНЦОВКА ОТЛИЧНАЯ</p><br>";
+      var button = document.createElement("button");
+      button.innerHTML = "Получить приз";
+      button.onclick = function() {
+        window.open("https://t.me/HZDUASJENFAHIJSDAFSHDIUXAWERADFJ", "_blank");
+      };
+      content.appendChild(button);
+    }
+  </script>
+</body>
+
+</html>
